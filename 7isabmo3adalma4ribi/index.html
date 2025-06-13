@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>حاسبة المعدل الدراسي المغربي</title>
+<link rel="icon" href="7asibaicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+<h1><i class="fas fa-calculator"></i> حاسبة المعدل الدراسي المغربي</h1>
+<div class="level-selector">
+<label for="levelSelect">اختر المستوى الدراسي:</label>
+<select id="levelSelect" onchange="showLevelSection()">
+<option value="none">-- اختر مستوى --</option>
+<optgroup label="الابتدائي">
+<option value="primary1">السنة الأولى ابتدائي</option>
+<option value="primary2">السنة الثانية ابتدائي</option>
+<option value="primary3">السنة الثالثة ابتدائي</option>
+<option value="primary4">السنة الرابعة ابتدائي</option>
+<option value="primary5">السنة الخامسة ابتدائي</option>
+<option value="primary6">السنة السادسة ابتدائي</option>
+</optgroup>
+<optgroup label="الإعدادي">
+<option value="college1">السنة الأولى إعدادي</option>
+<option value="college2">السنة الثانية إعدادي</option>
+<option value="college3">السنة الثالثة إعدادي</option>
+</optgroup>
+<optgroup label="الثانوي التأهيلي">
+<option value="commonTrunkScience">الجذع المشترك العلمي</option>
+<option value="commonTrunkGeneral">الجذع المشترك الأدبي</option>
+<option value="bacScienceMath">الأولى باك علوم رياضية</option>
+<option value="bacScienceExp">الأولى باك علوم تجريبية</option>
+<option value="bacLetters">الأولى باك آداب</option>
+<option value="baccalaureate">امتحانات البكالوريا</option>
+</optgroup>
+<optgroup label="اقتصاد وتدبير">
+<option value="bacEconomy1">الأولى باك اقتصاد وتدبير</option>
+<option value="bacEconomy2">الثانية باك اقتصاد وتدبير</option>
+</optgroup>
+</select>
+</div>
+<div class="level-section" id="primary1">
+<h2><i class="fas fa-book"></i> السنة الأولى ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary1">
+<div class="input-group">
+<label for="p1_arabe">اللغة العربية (على 10):</label>
+<input id="p1_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p1_français">اللغة الفرنسية (على 10):</label>
+<input id="p1_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p1_math">الرياضيات (على 10):</label>
+<input id="p1_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p1_islamic">التربية الإسلامية (على 10):</label>
+<input id="p1_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary1', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary1')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary1"></div>
+</div>
+<div class="level-section" id="primary2">
+<h2><i class="fas fa-book"></i> السنة الثانية ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary2">
+<div class="input-group">
+<label for="p2_arabe">اللغة العربية (على 10):</label>
+<input id="p2_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p2_français">اللغة الفرنسية (على 10):</label>
+<input id="p2_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p2_math">الرياضيات (على 10):</label>
+<input id="p2_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p2_islamic">التربية الإسلامية (على 10):</label>
+<input id="p2_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p2_activities">الأنشطة التربوية (على 10):</label>
+<input id="p2_activities" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary2', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary2')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary2"></div>
+</div>
+<div class="level-section" id="primary3">
+<h2><i class="fas fa-book"></i> السنة الثالثة ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary3">
+<div class="input-group">
+<label for="p3_arabe">اللغة العربية (على 10):</label>
+<input id="p3_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p3_français">اللغة الفرنسية (على 10):</label>
+<input id="p3_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p3_math">الرياضيات (على 10):</label>
+<input id="p3_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p3_islamic">التربية الإسلامية (على 10):</label>
+<input id="p3_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p3_activities">الأنشطة التربوية (على 10):</label>
+<input id="p3_activities" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p3_social">الاجتماعيات (على 10):</label>
+<input id="p3_social" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary3', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary3')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary3"></div>
+</div>
+<div class="level-section" id="primary4">
+<h2><i class="fas fa-book"></i> السنة الرابعة ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary4">
+<div class="input-group">
+<label for="p4_arabe">اللغة العربية (على 10):</label>
+<input id="p4_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_français">اللغة الفرنسية (على 10):</label>
+<input id="p4_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_math">الرياضيات (على 10):</label>
+<input id="p4_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_islamic">التربية الإسلامية (على 10):</label>
+<input id="p4_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_activities">الأنشطة التربوية (على 10):</label>
+<input id="p4_activities" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_social">الاجتماعيات (على 10):</label>
+<input id="p4_social" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p4_science">العلوم (على 10):</label>
+<input id="p4_science" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary4', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary4')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary4"></div>
+</div>
+<div class="level-section" id="primary5">
+<h2><i class="fas fa-book"></i> السنة الخامسة ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary5">
+<div class="input-group">
+<label for="p5_arabe">اللغة العربية (على 10):</label>
+<input id="p5_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_français">اللغة الفرنسية (على 10):</label>
+<input id="p5_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_math">الرياضيات (على 10):</label>
+<input id="p5_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_islamic">التربية الإسلامية (على 10):</label>
+<input id="p5_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_activities">الأنشطة التربوية (على 10):</label>
+<input id="p5_activities" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_social">الاجتماعيات (على 10):</label>
+<input id="p5_social" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p5_science">العلوم (على 10):</label>
+<input id="p5_science" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary5', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary5')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary5"></div>
+</div>
+<div class="level-section" id="primary6">
+<h2><i class="fas fa-book"></i> السنة السادسة ابتدائي</h2>
+<div class="subjects-grid" id="subjects_grid_primary6">
+<div class="input-group">
+<label for="p6_arabe">اللغة العربية (على 10):</label>
+<input id="p6_arabe" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_français">اللغة الفرنسية (على 10):</label>
+<input id="p6_français" max="10" min="0" placeholder="7.25" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_math">الرياضيات (على 10):</label>
+<input id="p6_math" max="10" min="0" placeholder="9.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_islamic">التربية الإسلامية (على 10):</label>
+<input id="p6_islamic" max="10" min="0" placeholder="9.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_activities">الأنشطة التربوية (على 10):</label>
+<input id="p6_activities" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_social">الاجتماعيات (على 10):</label>
+<input id="p6_social" max="10" min="0" placeholder="8.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="p6_science">العلوم (على 10):</label>
+<input id="p6_science" max="10" min="0" placeholder="8.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_primary6', 10)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('primary6')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_primary6"></div>
+</div>
+<div class="level-section" id="college1">
+<h2><i class="fas fa-school"></i> السنة الأولى إعدادي</h2>
+<div class="subjects-grid" id="subjects_grid_college1">
+<div class="input-group">
+<label for="c1_arabe">اللغة العربية (على 20):</label>
+<input id="c1_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c1_français">اللغة الفرنسية (على 20):</label>
+<input id="c1_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c1_math">الرياضيات (على 20):</label>
+<input id="c1_math" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c1_science">العلوم الطبيعية (على 20):</label>
+<input id="c1_science" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c1_history">التاريخ والجغرافيا (على 20):</label>
+<input id="c1_history" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c1_islamic">التربية الإسلامية (على 20):</label>
+<input id="c1_islamic" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c1_english">اللغة الإنجليزية (على 20):</label>
+<input id="c1_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c1_sport">التربية البدنية (على 20):</label>
+<input id="c1_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_college1', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('college1')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_college1"></div>
+</div>
+<div class="level-section" id="college2">
+<h2><i class="fas fa-school"></i> السنة الثانية إعدادي</h2>
+<div class="subjects-grid" id="subjects_grid_college2">
+<div class="input-group">
+<label for="c2_arabe">اللغة العربية (على 20):</label>
+<input id="c2_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c2_français">اللغة الفرنسية (على 20):</label>
+<input id="c2_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c2_math">الرياضيات (على 20):</label>
+<input id="c2_math" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c2_physics">الفيزياء والكيمياء (على 20):</label>
+<input id="c2_physics" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c2_svt">علوم الحياة والأرض (على 20):</label>
+<input id="c2_svt" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c2_history">التاريخ والجغرافيا (على 20):</label>
+<input id="c2_history" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c2_islamic">التربية الإسلامية (على 20):</label>
+<input id="c2_islamic" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c2_english">اللغة الإنجليزية (على 20):</label>
+<input id="c2_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c2_sport">التربية البدنية (على 20):</label>
+<input id="c2_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_college2', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('college2')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_college2"></div>
+</div>
+<div class="level-section" id="college3">
+<h2><i class="fas fa-school"></i> السنة الثالثة إعدادي</h2>
+<div class="subjects-grid" id="subjects_grid_college3">
+<div class="input-group">
+<label for="c3_arabe">اللغة العربية (على 20):</label>
+<input id="c3_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c3_français">اللغة الفرنسية (على 20):</label>
+<input id="c3_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c3_math">الرياضيات (على 20):</label>
+<input id="c3_math" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c3_physics">الفيزياء والكيمياء (على 20):</label>
+<input id="c3_physics" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c3_svt">علوم الحياة والأرض (على 20):</label>
+<input id="c3_svt" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="c3_history">التاريخ والجغرافيا (على 20):</label>
+<input id="c3_history" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c3_islamic">التربية الإسلامية (على 20):</label>
+<input id="c3_islamic" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c3_english">اللغة الإنجليزية (على 20):</label>
+<input id="c3_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c3_informatics">المعلوميات (على 20):</label>
+<input id="c3_informatics" max="20" min="0" placeholder="15.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="c3_sport">التربية البدنية (على 20):</label>
+<input id="c3_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_college3', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('college3')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_college3"></div>
+</div>
+<div class="level-section" id="commonTrunkScience">
+<h2><i class="fas fa-graduation-cap"></i> الجذع المشترك العلمي</h2>
+<div class="info-note">
+                ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+            </div>
+<div class="subjects-grid" id="subjects_grid_commonTrunkScience">
+<div class="input-group">
+<label for="cts_math">الرياضيات (على 20):</label>
+<input id="cts_math" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="cts_physics">الفيزياء والكيمياء (على 20):</label>
+<input id="cts_physics" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="cts_svt">علوم الحياة والأرض (على 20):</label>
+<input id="cts_svt" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="cts_informatics">المعلوميات (على 20):</label>
+<input id="cts_informatics" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="cts_arabe">اللغة العربية (على 20):</label>
+<input id="cts_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="cts_français">اللغة الفرنسية (على 20):</label>
+<input id="cts_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<label for="cts_english">اللغة الإنجليزية (على 20):</label>
+<input id="cts_english" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="cts_islamic">التربية الإسلامية (على 20):</label>
+<input id="cts_islamic" max="20" min="0" placeholder="15.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="cts_sport">التربية البدنية (على 20):</label>
+<input id="cts_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_commonTrunkScience', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('commonTrunkScience')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_commonTrunkScience"></div>
+</div>
+<div class="level-section" id="bacScienceMath">
+<h2><i class="fas fa-graduation-cap"></i> الأولى باك علوم رياضية</h2>
+<div class="info-note">
+                ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+            </div>
+<div class="subjects-grid" id="subjects_grid_bacScienceMath">
+<div class="input-group">
+<label for="bsm_math">الرياضيات (على 20):</label>
+<input id="bsm_math" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 5</span>
+</div>
+<div class="input-group">
+<label for="bsm_physics">الفيزياء (على 20):</label>
+<input id="bsm_physics" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="bsm_français">اللغة الفرنسية (على 20):</label>
+<input id="bsm_français" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<label for="bsm_english">اللغة الإنجليزية (على 20):</label>
+<input id="bsm_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="bsm_philosophy">الفلسفة (على 20):</label>
+<input id="bsm_philosophy" max="20" min="0" placeholder="11.50" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="bsm_arabe">اللغة العربية (على 20):</label>
+<input id="bsm_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="bsm_history">التاريخ والجغرافيا (على 20):</label>
+<input id="bsm_history" max="20" min="0" placeholder="13.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="bsm_sport">التربية البدنية (على 20):</label>
+<input id="bsm_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_bacScienceMath', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+            </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('bacScienceMath')">
+<i class="fas fa-calculator"></i> احسب المعدل
+            </button>
+<div class="result-display" id="result_bacScienceMath"></div>
+</div>
+<div class="level-section highschool-section" id="commonTrunkGeneral">
+<h2><i class="fas fa-graduation-cap"></i> الجذع المشترك الأدبي</h2>
+<div class="info-note">
+        ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+    </div>
+<div class="subjects-grid" id="subjects_grid_commonTrunkGeneral">
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="ctg_arabe">اللغة العربية (على 20):</label>
+<input id="ctg_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="ctg_français">اللغة الفرنسية (على 20):</label>
+<input id="ctg_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="ctg_history">التاريخ والجغرافيا (على 20):</label>
+<input id="ctg_history" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="ctg_philosophy">الفلسفة (على 20):</label>
+<input id="ctg_philosophy" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="ctg_english">اللغة الإنجليزية (على 20):</label>
+<input id="ctg_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_commonTrunkGeneral', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+    </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('commonTrunkGeneral')">
+<i class="fas fa-calculator"></i> احسب المعدل
+    </button>
+<div class="result-display" id="result_commonTrunkGeneral"></div>
+</div>
+<div class="level-section highschool-section" id="bacScienceExp">
+<h2><i class="fas fa-graduation-cap"></i> الأولى باك علوم تجريبية</h2>
+<div class="info-note">
+        ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+    </div>
+<div class="subjects-grid" id="subjects_grid_bacScienceExp">
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bse_svt">علوم الحياة والأرض (على 20):</label>
+<input id="bse_svt" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 5</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bse_physics">الفيزياء والكيمياء (على 20):</label>
+<input id="bse_physics" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bse_math">الرياضيات (على 20):</label>
+<input id="bse_math" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bse_français">اللغة الفرنسية (على 20):</label>
+<input id="bse_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bse_arabe">اللغة العربية (على 20):</label>
+<input id="bse_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_bacScienceExp', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+    </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('bacScienceExp')">
+<i class="fas fa-calculator"></i> احسب المعدل
+    </button>
+<div class="result-display" id="result_bacScienceExp"></div>
+</div>
+<div class="level-section highschool-section" id="bacLetters">
+<h2><i class="fas fa-graduation-cap"></i> الأولى باك آداب</h2>
+<div class="info-note">
+        ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+    </div>
+<div class="subjects-grid" id="subjects_grid_bacLetters">
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bl_arabe">اللغة العربية (على 20):</label>
+<input id="bl_arabe" max="20" min="0" placeholder="16.00" step="0.01" type="number"/>
+<span class="coeff">م. 5</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bl_français">اللغة الفرنسية (على 20):</label>
+<input id="bl_français" max="20" min="0" placeholder="14.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bl_history">التاريخ والجغرافيا (على 20):</label>
+<input id="bl_history" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bl_philosophy">الفلسفة (على 20):</label>
+<input id="bl_philosophy" max="20" min="0" placeholder="13.50" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<button class="remove-subject-btn"><i class="fas fa-times"></i></button>
+<label for="bl_english">اللغة الإنجليزية (على 20):</label>
+<input id="bl_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_bacLetters', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+    </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('bacLetters')">
+<i class="fas fa-calculator"></i> احسب المعدل
+    </button>
+<div class="result-display" id="result_bacLetters"></div>
+</div>
+<div class="level-section" id="baccalaureate">
+<h2><i class="fas fa-medal"></i> حساب معدل البكالوريا</h2>
+<div class="info-note">
+                (يتكون معدل البكالوريا من: <strong>25% الامتحان الجهوي + 75% الامتحان الوطني</strong> بالإضافة إلى المراقبة المستمرة. هذا الحساب مبسط.)
+            </div>
+<div class="subjects-grid">
+<div class="input-group">
+<label for="bac_regional">معدل الامتحان الجهوي (على 20):</label>
+<input id="bac_regional" max="20" min="0" placeholder="13.50" step="0.01" type="number"/>
+<span class="coeff">نسبة 25%</span>
+</div>
+<div class="input-group">
+<label for="bac_national">معدل الامتحان الوطني (على 20):</label>
+<input id="bac_national" max="20" min="0" placeholder="14.75" step="0.01" type="number"/>
+<span class="coeff">نسبة 75%</span>
+</div>
+</div>
+<button class="calculate-btn" onclick="calculateBacAverage()">
+<i class="fas fa-calculator"></i> احسب معدل البكالوريا
+            </button>
+<div class="result-display" id="result_baccalaureate"></div>
+</div>
+<div class="level-section highschool-section" id="bacEconomy1">
+<h2><i class="fas fa-graduation-cap"></i> الأولى باك اقتصاد وتدبير</h2>
+<div class="info-note">
+        ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+    </div>
+<div class="subjects-grid" id="subjects_grid_bacEconomy1">
+<div class="input-group">
+<label for="be1_arabe">اللغة العربية (على 20):</label>
+<input id="be1_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<label for="be1_français">اللغة الفرنسية (على 20):</label>
+<input id="be1_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="be1_math">الرياضيات (على 20):</label>
+<input id="be1_math" max="20" min="0" placeholder="13.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<label for="be1_economy">الاقتصاد العام والإحصاء (على 20):</label>
+<input id="be1_economy" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="be1_management">التدبير المحاسباتي (على 20):</label>
+<input id="be1_management" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="be1_english">اللغة الإنجليزية (على 20):</label>
+<input id="be1_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="be1_islamic">التربية الإسلامية (على 20):</label>
+<input id="be1_islamic" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="be1_history">التاريخ والجغرافيا (على 20):</label>
+<input id="be1_history" max="20" min="0" placeholder="13.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="be1_sport">التربية البدنية (على 20):</label>
+<input id="be1_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_bacEconomy1', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+    </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('bacEconomy1')">
+<i class="fas fa-calculator"></i> احسب المعدل
+    </button>
+<div class="result-display" id="result_bacEconomy1"></div>
+</div>
+<div class="level-section highschool-section" id="bacEconomy2">
+<h2><i class="fas fa-graduation-cap"></i> الثانية باك اقتصاد وتدبير</h2>
+<div class="info-note">
+        ملاحظة: المواد والمعاملات قد تختلف حسب المؤسسة والسنة الدراسية
+    </div>
+<div class="subjects-grid" id="subjects_grid_bacEconomy2">
+<div class="input-group">
+<label for="be2_arabe">اللغة العربية (على 20):</label>
+<input id="be2_arabe" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 3</span>
+</div>
+<div class="input-group">
+<label for="be2_français">اللغة الفرنسية (على 20):</label>
+<input id="be2_français" max="20" min="0" placeholder="12.50" step="0.01" type="number"/>
+<span class="coeff">م. 4</span>
+</div>
+<div class="input-group">
+<label for="be2_economy">الاقتصاد العام والإحصاء (على 20):</label>
+<input id="be2_economy" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 6</span>
+</div>
+<div class="input-group">
+<label for="be2_management">التدبير المحاسباتي (على 20):</label>
+<input id="be2_management" max="20" min="0" placeholder="14.00" step="0.01" type="number"/>
+<span class="coeff">م. 7</span>
+</div>
+<div class="input-group">
+<label for="be2_english">اللغة الإنجليزية (على 20):</label>
+<input id="be2_english" max="20" min="0" placeholder="12.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="be2_islamic">التربية الإسلامية (على 20):</label>
+<input id="be2_islamic" max="20" min="0" placeholder="15.00" step="0.01" type="number"/>
+<span class="coeff">م. 2</span>
+</div>
+<div class="input-group">
+<label for="be2_history">التاريخ والجغرافيا (على 20):</label>
+<input id="be2_history" max="20" min="0" placeholder="13.50" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+<div class="input-group">
+<label for="be2_sport">التربية البدنية (على 20):</label>
+<input id="be2_sport" max="20" min="0" placeholder="17.00" step="0.01" type="number"/>
+<span class="coeff">م. 1</span>
+</div>
+</div>
+<button class="add-subject-btn" onclick="addSubject('subjects_grid_bacEconomy2', 20)">
+<i class="fas fa-plus"></i> إضافة مادة جديدة
+    </button>
+<button class="calculate-btn" onclick="calculateLevelAverage('bacEconomy2')">
+<i class="fas fa-calculator"></i> احسب المعدل
+    </button>
+<div class="result-display" id="result_bacEconomy2"></div>
+</div>
+<footer>
+<p>© 2023 حاسبة المعدل الدراسي المغربي | تم التطوير وفقًا للمناهج التعليمية المغربية - By MTL</p>
+</footer>
+</div>   
+<script src="script.js"></script>
+</body>
+</html>
